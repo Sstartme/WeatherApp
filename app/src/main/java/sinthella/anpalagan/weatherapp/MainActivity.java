@@ -1,8 +1,10 @@
 package sinthella.anpalagan.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -11,7 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<linearLayoutManager> extends AppCompatActivity {
 
     private RelativeLayout homeRL;
     private ProgressBar loadingPB;
@@ -19,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView weatherRV;
     private TextInputEditText cityEdt;
     private ImageView backIV,iconIV,searchIV;
+    private RecyclerView.LayoutManager layoutManager;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         iconIV=findViewById(R.id.idTVIcon);
         searchIV=findViewById(R.id.idIVSearch);
 
+    }
 
-
-
+    private class lateinit {
     }
 }

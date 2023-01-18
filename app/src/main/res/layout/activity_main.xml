@@ -4,30 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black_shade_1"
+    >
 
     <ProgressBar
+        android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idPBLoading"
         android:visibility="visible"
-        android:background="@color/black_shade_1"
         android:layout_centerInParent="true"
         />
     <RelativeLayout
+        android:id="@+id/idRLHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/idRLHome"
         android:visibility="gone"
         >
         <ImageView
+            android:id="@+id/idIVBack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@color/black_shade_1"
-            android:id="@+id/idIVBack"
             />
         <TextView
+            android:id="@+id/idTVCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="City Name"
@@ -39,13 +41,13 @@
             android:textSize="18sp"
             />
         <LinearLayout
+            android:id="@+id/idLLEdt"
+            android:layout_below="@+id/idTVCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/idLLEdt"
-            android:layout_below="@+id/idTVCityName"
             android:weightSum="5"
-            tools:ignore="UnknownId">
+            >
             
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
@@ -60,14 +62,14 @@
                 android:textColorHint="@color/white"
                 >
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/idEdtCity"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:id="@+id/idEdtCity"
               android:importantForAutofill="no"
               android:inputType="text"
               android:singleLine="true"
               android:textColor="@color/white"
-              android:textSize="14dp"
+              android:textSize="14sp"
               android:background="@android:color/transparent"
               />
             </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +89,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/isTVTemperature"
+            android:id="@+id/idTVTemperature"
             android:layout_below="@+id/idLLEdt"
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
@@ -97,11 +99,11 @@
             android:textSize="70dp"
             />
         <ImageView
+            android:id="@+id/idTVIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/idTVIcon"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/isTVTemperature"
+            android:layout_below="@+id/idTVTemperature"
             android:layout_margin="10dp"
             android:src="@mipmap/ic_launcher"
             />
@@ -133,8 +135,7 @@
             android:id="@+id/idRvWeather"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
-            android:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
-
     </RelativeLayout>
 </RelativeLayout>
