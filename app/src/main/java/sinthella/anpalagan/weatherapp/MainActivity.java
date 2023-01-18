@@ -41,6 +41,7 @@ public class MainActivity<linearLayoutManager> extends AppCompatActivity {
     private WeatherRVAdapter weatherRVAdapter;
     private LocationManager locationManager;
     private int PERMISSION_CODE=1;
+    private String cityName;
 
 
 
@@ -68,6 +69,7 @@ public class MainActivity<linearLayoutManager> extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity, this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_CODE);
         }
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        cityName = getCityName(location.getLongitude(),location.getLatitude());
     }
 
         private String getCityName(double longitude, double latitude){
