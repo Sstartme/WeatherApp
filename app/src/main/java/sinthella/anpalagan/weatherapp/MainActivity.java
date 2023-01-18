@@ -1,5 +1,6 @@
 package sinthella.anpalagan.weatherapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -70,9 +72,38 @@ public class MainActivity<linearLayoutManager> extends AppCompatActivity {
         }
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         cityName = getCityName(location.getLongitude(),location.getLatitude());
+
+        getWeatherInfo(cityName);
+        searchIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String city = cityEdt.getText().toString();
+                if (city.isEmpty()){
+                    Toast.makeText(MainActivity.this,"Please enter cityName",Toast.LENGTH_SHORT).show();
+                }else {
+                    cityNameTV.setText(cityName);
+                    getWeatherInfo(city);
+                }
+            }
+        });
+
+
     }
 
-        private String getCityName(double longitude, double latitude){
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==PERMISSION_CODE){
+            if(grantResults.length>0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"Permission granted...",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this,"Please provide the permissions",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    private String getCityName(double longitude, double latitude){
         String cityName = "Not found";
             Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
             try {
