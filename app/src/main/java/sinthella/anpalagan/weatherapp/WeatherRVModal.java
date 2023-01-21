@@ -2,6 +2,9 @@ package sinthella.anpalagan.weatherapp;
 
 public class WeatherRVModal {
     private String time;
+    private String temperature;
+    private String icon;
+    private String windSpeed;
 
     public WeatherRVModal(String time, String temperature, String icon, String windSpeed) {
         this.time = time;
@@ -9,8 +12,6 @@ public class WeatherRVModal {
         this.icon = icon;
         this.windSpeed = windSpeed;
     }
-
-    private String temperature;
 
     public String getTime() {
         return time;
@@ -43,8 +44,5 @@ public class WeatherRVModal {
     public void setWindSpeed(String windSpeed) {
         this.windSpeed = windSpeed;
     }
-
-    private String icon;
-    private String windSpeed;
 
 }
