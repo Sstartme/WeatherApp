@@ -148,6 +148,20 @@ JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, 
         weatherRVModalArrayList.clear();
         try {
             String temperature = response.getJSONObject("current").getString("temp_c");
+            temperatureTV.setText(temperature+" °c");
+            int isDay = response.getJSONObject("current").getInt("is_day");
+            String condition = response.getJSONObject("current").getJSONObject("condition").getString("text");
+            String conditionIcon = response.getJSONObject("current").getJSONObject("condition").getString("icon");
+Picasso.get().load("http:".concat(conditionIcon)).into(iconIV);
+conditionTV.setText(condition);
+if(isDay==1){
+    //morning
+    Picasso.get().load("https://www.google.ch/url?sa=i&url=https%3A%2F%2Fin.pinterest.com%2Fpin%2F724587027523263164%2F&psig=AOvVaw3NpiYZYtRH1j8zpu8tC9LI&ust=1674411557179000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNj0rqKj2fwCFQAAAAAdAAAAABAi").into(backIV);
+}else {
+    Picasso.get().load("https://www.google.ch/url?sa=i&url=https%3A%2F%2Fwww.rawpixel.com%2Fsearch%2Fnight%2520sky&psig=AOvVaw3SMfLH3eS13i6mMSy9KsZ1&ust=1674411688967000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNDpuOGj2fwCFQAAAAAdAAAAABAI").into(backIV);
+}
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
