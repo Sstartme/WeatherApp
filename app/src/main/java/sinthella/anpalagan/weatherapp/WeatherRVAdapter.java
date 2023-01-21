@@ -26,6 +26,9 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
         this.weatherRVModalArrayList = weatherRVModalArrayList;
     }
 
+    public <linearLayoutManager> WeatherRVAdapter(MainActivity<linearLayoutManager> context, ArrayList<WeatherRVAdapter> weatherRVAdapterArrayList) {
+    }
+
     @NonNull
     @Override
     public WeatherRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
