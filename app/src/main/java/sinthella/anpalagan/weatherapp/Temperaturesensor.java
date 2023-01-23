@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-    public class temperaturesensor extends AppCompatActivity implements SensorEventListener, temperaturesensore {
+    public class Temperaturesensor extends AppCompatActivity implements SensorEventListener, temperaturesensore {
         private SensorManager sensorManager;
         private TextView textView;
         private Sensor tempSensor;
