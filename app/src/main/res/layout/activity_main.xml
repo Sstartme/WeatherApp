@@ -12,14 +12,14 @@
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         />
     <RelativeLayout
         android:id="@+id/idRLHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         >
         <ImageView
             android:id="@+id/idIVBack"
@@ -51,6 +51,8 @@
             
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@android:color/transparent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idTILCity"
                 android:layout_margin="10dp"
@@ -94,7 +96,7 @@
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
             android:padding="5dp"
-            android:text="23"
+            android:text="0"
             android:textColor="@color/white"
             android:textSize="70dp"
             />

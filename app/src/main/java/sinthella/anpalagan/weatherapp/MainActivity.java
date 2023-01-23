@@ -137,7 +137,7 @@ public class MainActivity<linearLayoutManager> extends AppCompatActivity {
     }
 
     private void getWeatherInfo(String cityName) {
-        String url = "http://api.weatherapi.com/v1/forecast.json?key=8ca4db650e9842c9ab390658231701&q=" + cityName + "&days=1&aqi=no&alerts=yes";
+        String url = "http://api.weatherapi.com/v1/forecast.json?key=8ca4db650e9842c9ab390658231701&q=Switzerland&days=1&aqi=no&alerts=no";
 cityNameTV.setText(cityName);
 RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -160,6 +160,20 @@ if(isDay==1){
 }else {
     Picasso.get().load("https://www.google.ch/url?sa=i&url=https%3A%2F%2Fwww.rawpixel.com%2Fsearch%2Fnight%2520sky&psig=AOvVaw3SMfLH3eS13i6mMSy9KsZ1&ust=1674411688967000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNDpuOGj2fwCFQAAAAAdAAAAABAI").into(backIV);
 }
+JSONObject forecastObj = response.getJSONObject("forecast");
+JSONObject forcoastO = forecastObj.getJSONArray("forecastday").getJSONObject(0);
+JSONArray hourArray = forcoastO.getJSONArray("hour");
+
+for (int i=0; i<hourArray.length(); i++){
+    JSONObject hourObj = hourArray.getJSONObject(i);
+    String time = hourObj.getString("time");
+    String temper = hourObj.getString("temp_c");
+    String img = hourObj.getJSONObject("condition").getString("icon");
+    String wind = hourObj.getString("wind_kph");
+weatherRVModalArrayList.add(new WeatherRVModal(time,temper,img,wind));
+
+}
+weatherRVAdapter.notifyDataSetChanged();
 
 
         } catch (JSONException e) {
